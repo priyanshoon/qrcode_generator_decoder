@@ -17,11 +17,20 @@ def qrcode_decoder(file_name):
 
 
 if __name__ == "__main__":
-    user_input = int(input('Press 1 to make qrcode '
-                           'Press 2 to decode qrcode: '))
-    if user_input == 1:
-        user_data_to_qrcode = input('Enter your data which you want to save in your qrcode: ')
-        qrcode_generator(user_data_to_qrcode)
-    else:
-        user_file_input = input('Enter your file name which you want to decode: ')
-        qrcode_decoder(user_file_input)
+    while True:
+        try:
+            user_input = int(input('Press 1 to make qrcode '
+                                   'Press 2 to decode qrcode '
+                                   'press 3 to exit : '))
+            if user_input == 1:
+                user_data_to_qrcode = input('Enter your data which you want to save in your qrcode: ')
+                qrcode_generator(user_data_to_qrcode)
+            elif user_input == 3:
+                print('Program closed.')
+                exit()
+            else:
+                user_file_input = input('Enter your file name which you want to decode: ')
+                qrcode_decoder(user_file_input)
+        except Exception as e:
+            print(e)
+            print('Sorry program failed!')
